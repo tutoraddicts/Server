@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# this file is to run the server binary file
+
+
+./server.o

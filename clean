@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# file to clean the created files
+
+rm -r server.o

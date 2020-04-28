@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Shell script to build the server binary file
+
+g++ --std=c++17 ./src/*.cpp ./src/util/mongoose/*.c -o server.o
