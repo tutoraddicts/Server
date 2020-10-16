@@ -3,4 +3,4 @@
 # this file is to run the server binary file
 
 
-./server.o
+./server.o $1

@@ -41,7 +41,6 @@ static void server::eventHandeler(struct mg_connection *mc, int event, void *p)
 */
 void server::initServer(std::string port)
 {  
-    // std::cout << "in initServer Method" << std::endl;
     // Mongoose Event Manager
     struct mg_mgr mgr;
     // Mongoose Connection
@@ -63,24 +62,18 @@ void server::initServer(std::string port)
     mg_set_protocol_http_websocket(mc); // setting http protocol
 
     server_opts.document_root = "."; // setting up the documents files
+    
     server_opts.enable_directory_listing = "yes"; //  now it will list the server
 
-    /*while (true) //  continious loop
-    {
-        std::cout << "in while loop" << std::endl;
-        mg_mgr_poll(&mgr, 1000);
-    } */
-    
+    std::cout << "Server Running ctrl+c to stop" << std::endl;
     while (!stop)
     {
-        std::cout << "Server Running ctrl+c to stop" << std::endl;
+        
         mg_mgr_poll(&mgr, 1000);
+        std::cout << mc->sa.sin.sin_zero;
+        // printf("%s", server_opts.index_files);
         if(false)
             break;
-        /*if (!std::cin.get())
-            break;
-        else
-            continue;*/
     }   
 
     // Free Up all the memory if the server shuts down
@@ -91,9 +84,9 @@ void server::initServer(std::string port)
 int main (int args,std::string port) 
 {
     // This is to dtermine if the user send the port number during execution or not
-    if ( ConvertDataType::StringToInt(port) < 1 /*|| == NULL*/) 
+    if ( ConvertDataType::StringToInt(port) < 1 ) 
         server::fetchPort(port);
-    std::cout << "Our server Created in port : " << port << std::endl;
+    std::cout << "Our server Created in port : " << "http://127.0.0.1:" << port << "/" << std::endl;
 
     //std::async(std::launch::async, server::initServer, port);
     server::initServer(port);

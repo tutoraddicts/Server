@@ -5,11 +5,11 @@
 
 namespace ConvertDataType
 {
-    char IntToChar(int intVar)
+    const char* IntToChar(int intVar)
     {
         std::string tempString = std::to_string(intVar);
         const char *Value = tempString.c_str();
-        return *Value;
+        return Value;
     }
 
     int StringToInt(std::string &stringVar)
